@@ -1,5 +1,6 @@
 """
   Banana Dancing
+  unwillingly-affirming-important-jackrabbit-0bc
 """
 
 load("render.star", "render")
@@ -13,346 +14,678 @@ MUSTARD_YELLOW = "#CECE42"
 RED = "#EA3323"
 
 def main():
-    boxes = render.Animation(
+    animate_boxes = render.Animation(
         children = [
-            render.Box(width = 10, height = 10, color = "#300"),
-            render.Box(width = 12, height = 12, color = "#500"),
-            render.Box(width = 14, height = 14, color = "#700"),
-            render.Box(width = 16, height = 16, color = "#900"),
-            render.Box(width = 18, height = 18, color = "#b00"),
-            render.Box(width = 18, height = 18, color = "#b00"),
-            render.Box(width = 16, height = 16, color = "#900"),
-            render.Box(width = 14, height = 14, color = "#700"),
-            render.Box(width = 12, height = 12, color = "#500"),
-            render.Box(width = 10, height = 10, color = "#300"),
+            first_frame(),
+            second_frame(),
         ],
     )
 
     return render.Root(
         delay = 500,
         child = render.Box(
-            child = first_frame(),
+            color = BLACK,
+            # child = second_frame(),
+            child = animate_boxes,
         ),
     )
 
 def first_frame():
     return render.Column(
         expanded = True,
-        main_align = "center",
+        main_align = "end",
         cross_align = "start",
         children = [
             # --------------------------
             # Forehead
             render.Row(
                 children = [
-                    render.Box(width = 9, height = 1, color = BLACK),
-                    render.Box(width = 2, height = 1, color = BORDER),
+                    renderSection(9, BLACK),
+                    renderSection(2, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 4, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(4, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = DARK_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(2, DARK_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = DARK_YELLOW),
-                    render.Box(width = 1, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, DARK_YELLOW),
+                    renderSection(1, YELLOW),
+                    renderSection(2, BORDER),
                 ],
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(2, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = YELLOW),
-                    render.Box(width = 1, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
                 ],
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ],
             ),
             render.Row(
                 children = [
-                    render.Box(width = 5, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 5, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = YELLOW),
-                    render.Box(width = 1, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
+                    renderSection(6, BLACK),
+                    renderSection(5, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
                 ]
             ),
             # --------------------------
             # Eyes
             render.Row(
                 children = [
-                    render.Box(width = 5, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(5, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 5, height = 1, color = BLACK),
-                    render.Box(width = 4, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(5, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 5, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(5, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 6, height = 1, color = BLACK),
-                    render.Box(width = 5, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(6, BLACK),
+                    renderSection(5, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(1, BORDER),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             # --------------------------
             # Mouth
             render.Row(
                 children = [
-                    render.Box(width = 7, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = YELLOW),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(7, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(3, BORDER),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 7, height = 1, color = BLACK),
-                    render.Box(width = 4, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = RED),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(7, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(2, RED),
+                    renderSection(1, BORDER),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = RED),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, RED),
+                    renderSection(1, BORDER),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = RED),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, RED),
+                    renderSection(2, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 7, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(7, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
                 ]
             ),
             # --------------------------
             # arms
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 4, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(4, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = WHITE),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 4, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(1, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(2, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(4, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 4, height = 1, color = YELLOW),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(4, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = WHITE),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = YELLOW),
-                    render.Box(width = 3, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = BLACK),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(1, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(2, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(3, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                    renderSection(2, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = YELLOW),
-                    render.Box(width = 3, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 2, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = BLACK),
-                    render.Box(width = 4, height = 1, color = BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(3, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                    renderSection(2, BLACK),
+                    renderSection(4, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 3, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = YELLOW),
-                    render.Box(width = 3, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 2, height = 1, color = BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(3, MUSTARD_YELLOW),
+                    renderSection(3, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(2, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 3, height = 1, color = BLACK),
-                    render.Box(width = 4, height = 1, color = BORDER),
-                    render.Box(width = 2, height = 1, color = MUSTARD_YELLOW),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(3, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 2, height = 1, color = BLACK),
-                    render.Box(width = 13, height = 1, color = BORDER),
+                    renderSection(2, BLACK),
+                    renderSection(13, BORDER),
                 ]
             ),
             # --------------------------
             # shoes
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 8, height = 1, color = BLACK),
-                    render.Box(width = 4, height = 1, color = BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(4, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = WHITE),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = BLACK),
-                    render.Box(width = 3, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(3, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 5, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = BLACK),
-                    render.Box(width = 1, height = 1, color = BORDER),
-                    render.Box(width = 5, height = 1, color = WHITE),
-                    render.Box(width = 1, height = 1, color = BORDER),
+                    renderSection(1, BORDER),
+                    renderSection(5, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(5, WHITE),
+                    renderSection(1, BORDER),
                 ]
             ),
             render.Row(
                 children = [
-                    render.Box(width = 1, height = 1, color = BLACK),
-                    render.Box(width = 6, height = 1, color = BORDER),
-                    render.Box(width = 3, height = 1, color = BLACK),
-                    render.Box(width = 6, height = 1, color = BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(6, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(6, BORDER),
                 ]
             ),
         ],
     )
+
+def second_frame():
+    return render.Column(
+        expanded = True,
+        main_align = "end",
+        cross_align = "start",
+        children = [
+            # --------------------------
+            # Forehead
+            render.Row(
+                children = [
+                    renderSection(11, BLACK),
+                    renderSection(2, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(4, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(2, DARK_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, DARK_YELLOW),
+                    renderSection(1, YELLOW),
+                    renderSection(2, BORDER),
+                ],
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(2, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                ],
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ],
+            ),
+            render.Row(
+                children = [
+                    renderSection(8, BLACK),
+                    renderSection(5, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                ]
+            ),
+            # --------------------------
+            # Eyes
+            render.Row(
+                children = [
+                    renderSection(7, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(7, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(7, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(8, BLACK),
+                    renderSection(5, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(1, BORDER),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            # --------------------------
+            # Mouth
+            render.Row(
+                children = [
+                    renderSection(9, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(3, BORDER),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(9, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(2, RED),
+                    renderSection(1, BORDER),
+                    renderSection(1, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, RED),
+                    renderSection(1, BORDER),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(10, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(1, RED),
+                    renderSection(2, BORDER),
+                    renderSection(1, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(9, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(5, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(5, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(3, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(1, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(2, BORDER),
+                    renderSection(4, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(4, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                    renderSection(2, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(4, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(1, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(3, WHITE),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(1, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(2, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(4, YELLOW),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(2, WHITE),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(1, BLACK),
+                    renderSection(5, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(3, YELLOW),
+                    renderSection(3, MUSTARD_YELLOW),
+                    renderSection(3, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(5, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(5, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(3, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(3, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(7, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(2, YELLOW),
+                    renderSection(3, MUSTARD_YELLOW),
+                    renderSection(2, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(6, BLACK),
+                    renderSection(3, BORDER),
+                    renderSection(2, MUSTARD_YELLOW),
+                    renderSection(3, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(5, BLACK),
+                    renderSection(7, BORDER),
+                    renderSection(1, BLACK),
+                    renderSection(2, BORDER),
+                ]
+            ),
+            # -----------
+            # Legs
+            render.Row(
+                children = [
+                    renderSection(5, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(8, BLACK),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(3, BLACK),
+                    renderSection(4, BORDER),
+                    renderSection(7, BLACK),
+                    renderSection(4, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(2, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(4, WHITE),
+                    renderSection(2, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(2, BORDER),
+                    renderSection(4, WHITE),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(2, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(5, WHITE),
+                    renderSection(1, BORDER),
+                    renderSection(3, BLACK),
+                    renderSection(1, BORDER),
+                    renderSection(5, WHITE),
+                    renderSection(1, BORDER),
+                ]
+            ),
+            render.Row(
+                children = [
+                    renderSection(3, BLACK),
+                    renderSection(5, BORDER),
+                    renderSection(5, BLACK),
+                    renderSection(5, BORDER),
+                ]
+            )
+        ]
+    );
+
+def renderSection(width, color):
+    return render.Box(width = width, height = 1, color = color)
