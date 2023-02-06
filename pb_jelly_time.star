@@ -8,7 +8,7 @@ Author: jay-medina
 load("render.star", "render")
 load("schema.star", "schema")
 
-DEFAULT_SPEED = 100
+DEFAULT_SPEED = 80
 
 def main(config):
     speed = config.get("speed", DEFAULT_SPEED)
@@ -38,15 +38,15 @@ def get_schema():
     options = [
         schema.Option(
             display = "Normal",
-            value = "120",
-        ),
-        schema.Option(
-            display = "Fast",
             value = "100",
         ),
         schema.Option(
-            display = "Fastest",
+            display = "Fast",
             value = "80",
+        ),
+        schema.Option(
+            display = "Fastest",
+            value = "65",
         ),
     ]
 
