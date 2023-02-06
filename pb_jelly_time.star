@@ -10,6 +10,7 @@ load("schema.star", "schema")
 
 DEFAULT_SPEED = 80
 
+# Implementation
 def main(config):
     speed = config.get("speed", DEFAULT_SPEED)
 
