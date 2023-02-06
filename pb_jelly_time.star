@@ -10,9 +10,9 @@ load("schema.star", "schema")
 
 DEFAULT_WHO = "world"
 
-def main(config):
-    who = config.str("who", DEFAULT_WHO)
-    message = "Hello, {}!".format(who)
+def main(_config):
+    # who = config.str("who", DEFAULT_WHO)
+    # message = "Hello, {}!".format(who)
     return render_banana()
 
 def get_schema():
