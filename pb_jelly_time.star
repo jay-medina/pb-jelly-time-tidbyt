@@ -8,38 +8,11 @@ Author: jay-medina
 load("render.star", "render")
 load("schema.star", "schema")
 
-DEFAULT_WHO = "world"
+DEFAULT_SPEED = 100
 
-def main(_config):
-    # who = config.str("who", DEFAULT_WHO)
-    # message = "Hello, {}!".format(who)
-    return render_banana()
+def main(config):
+    speed = config.get("speed", DEFAULT_SPEED)
 
-def get_schema():
-    return schema.Schema(
-        version = "1",
-        fields = [
-            schema.Text(
-                id = "who",
-                name = "Who?",
-                desc = "Who to say hello to.",
-                icon = "user",
-            ),
-        ],
-    )
-
-
-
-
-BLACK = "#000"
-BORDER = "#555"
-WHITE = "#FFF"
-DARK_YELLOW = "#9C9C30"
-YELLOW = "#FFFF54"
-MUSTARD_YELLOW = "#CECE42"
-RED = "#EA3323"
-
-def render_banana():
     animate_boxes = render.Animation(
         children = [
             render_frames(get_frame_1_rows()),
@@ -54,12 +27,51 @@ def render_banana():
     )
 
     return render.Root(
-        delay = 100,
+        delay = int(speed),
         child = render.Box(
             color = BLACK,
             child = animate_boxes,
         ),
     )
+
+def get_schema():
+    options = [
+        schema.Option(
+            display = 'Normal',
+            value = "120",
+        ),
+        schema.Option(
+            display = 'Fast',
+            value = "100", 
+        ),
+        schema.Option(
+            display = 'Fastest',
+            value = "80",
+        ),
+    ]
+
+    return schema.Schema(
+        version = "1",
+        fields = [
+            schema.Dropdown(
+                id = "speed",
+                name = "Dance Speed",
+                desc = "The speed in which the banana dances",
+                icon = "bolt",
+                default = options[1].value,
+                options = options,
+            ),
+        ],
+    )
+
+BLACK = "#000"
+BORDER = "#555"
+WHITE = "#FFF"
+DARK_YELLOW = "#9C9C30"
+YELLOW = "#FFFF54"
+MUSTARD_YELLOW = "#CECE42"
+RED = "#EA3323"
+
 
 def render_frames(frame_rows, reverse = False):
     """Displays the first banana frame
