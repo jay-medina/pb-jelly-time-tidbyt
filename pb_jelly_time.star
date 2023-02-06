@@ -19,10 +19,10 @@ def main(config):
             render_frames(get_frame_2_rows()),
             render_frames(get_frame_3_rows()),
             render_frames(get_frame_4_rows()),
-            render_frames(get_frame_1_rows(), reverse=True),
-            render_frames(get_frame_2_rows(), reverse=True),
-            render_frames(get_frame_3_rows(), reverse=True),
-            render_frames(get_frame_4_rows(), reverse=True),
+            render_frames(get_frame_1_rows(), reverse = True),
+            render_frames(get_frame_2_rows(), reverse = True),
+            render_frames(get_frame_3_rows(), reverse = True),
+            render_frames(get_frame_4_rows(), reverse = True),
         ],
     )
 
@@ -37,15 +37,15 @@ def main(config):
 def get_schema():
     options = [
         schema.Option(
-            display = 'Normal',
+            display = "Normal",
             value = "120",
         ),
         schema.Option(
-            display = 'Fast',
-            value = "100", 
+            display = "Fast",
+            value = "100",
         ),
         schema.Option(
-            display = 'Fastest',
+            display = "Fastest",
             value = "80",
         ),
     ]
@@ -71,7 +71,6 @@ DARK_YELLOW = "#9C9C30"
 YELLOW = "#FFFF54"
 MUSTARD_YELLOW = "#CECE42"
 RED = "#EA3323"
-
 
 def render_frames(frame_rows, reverse = False):
     """Displays the first banana frame
@@ -971,7 +970,7 @@ def get_frame_3_rows():
             renderSection(7, BLACK),
             renderSection(1, BORDER),
             renderSection(4, WHITE),
-            renderSection(2, BORDER), 
+            renderSection(2, BORDER),
             renderSection(3, BLACK),
             renderSection(2, BORDER),
             renderSection(4, WHITE),
@@ -984,7 +983,7 @@ def get_frame_3_rows():
             renderSection(7, BLACK),
             renderSection(5, BORDER),
             renderSection(8, BLACK),
-        ]
+        ],
     ]
 
 def get_frame_4_rows():
@@ -1001,7 +1000,7 @@ def get_frame_4_rows():
             renderSection(1, BORDER),
             renderSection(2, DARK_YELLOW),
             renderSection(1, BORDER),
-            renderSection(11, BLACK)
+            renderSection(11, BLACK),
         ],
         [
             renderSection(11, BLACK),
@@ -1009,7 +1008,7 @@ def get_frame_4_rows():
             renderSection(1, DARK_YELLOW),
             renderSection(1, MUSTARD_YELLOW),
             renderSection(1, BORDER),
-            renderSection(11, BLACK)
+            renderSection(11, BLACK),
         ],
         [
             renderSection(11, BLACK),
@@ -1017,7 +1016,7 @@ def get_frame_4_rows():
             renderSection(1, MUSTARD_YELLOW),
             renderSection(2, YELLOW),
             renderSection(2, BORDER),
-            renderSection(10, BLACK)
+            renderSection(10, BLACK),
         ],
         [
             renderSection(10, BLACK),
@@ -1091,7 +1090,7 @@ def get_frame_4_rows():
             renderSection(4, BLACK),
             renderSection(2, BORDER),
             renderSection(2, WHITE),
-            renderSection(1, BORDER)
+            renderSection(1, BORDER),
         ],
         [
             renderSection(1, BORDER),
@@ -1277,5 +1276,5 @@ def get_frame_4_rows():
             renderSection(5, BLACK),
             renderSection(6, BORDER),
             renderSection(3, BLACK),
-        ]
+        ],
     ]
