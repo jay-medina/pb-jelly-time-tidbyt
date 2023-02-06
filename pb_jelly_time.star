@@ -1,9 +1,35 @@
 """
-  Banana Dancing
-  unwillingly-affirming-important-jackrabbit-0bc
+Applet: PB Jelly Time
+Summary: Banana Dancing
+Description: The Peanut Butter Jelly Time Dancing Banana.
+Author: jay-medina
 """
 
 load("render.star", "render")
+load("schema.star", "schema")
+
+DEFAULT_WHO = "world"
+
+def main(config):
+    who = config.str("who", DEFAULT_WHO)
+    message = "Hello, {}!".format(who)
+    return render_banana()
+
+def get_schema():
+    return schema.Schema(
+        version = "1",
+        fields = [
+            schema.Text(
+                id = "who",
+                name = "Who?",
+                desc = "Who to say hello to.",
+                icon = "user",
+            ),
+        ],
+    )
+
+
+
 
 BLACK = "#000"
 BORDER = "#555"
@@ -13,7 +39,7 @@ YELLOW = "#FFFF54"
 MUSTARD_YELLOW = "#CECE42"
 RED = "#EA3323"
 
-def main():
+def render_banana():
     animate_boxes = render.Animation(
         children = [
             render_frames(get_frame_1_rows()),
